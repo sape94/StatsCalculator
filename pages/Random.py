@@ -4,7 +4,7 @@ from modules import CustomStreamlit as cst
 
 cst.Header('Random Sampler | App', 'images/NIQ_logo.png')
 
-selected = cst.Custom().set_menu(options=['Home', 'Sampling', 'Replacing'],
+selected = cst.Custom().set_menu(options=['   Home   ', 'Sampling', 'Replacing'],
                                  icons=['house',
                                         'calculator',
                                         'box-arrow-in-down-left'],
@@ -13,13 +13,13 @@ selected = cst.Custom().set_menu(options=['Home', 'Sampling', 'Replacing'],
 if selected == 'Sampling':
     left_space, sub_menu, right_space = st.columns([1, 8, 1], gap='small')
     with sub_menu:
-        selected2 = cst.Custom().set_menu(options=['All', 'Random', 'Structured'],
+        selected2 = cst.Custom().set_menu(options=['   All   ', 'Random', 'Structured'],
                                           icons=['bricks',
                                                  'shuffle',
                                                  'file-bar-graph'],
                                           index=1)
 
-    if selected2 == 'All':
+    if selected2 == '   All   ':
         st.switch_page('pages/Sampling.py')
 
     if selected2 == 'Random':
@@ -97,7 +97,7 @@ if selected == 'Sampling':
     if selected2 == 'Structured':
         st.switch_page('pages/Structured.py')
 
-if selected == 'Home':
+if selected == '   Home   ':
     st.switch_page('StatsCalculator.py')
 
 
