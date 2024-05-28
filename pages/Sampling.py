@@ -7,7 +7,7 @@ from modules import StructuredSampler as ss
 
 cst.Header('Sample Size Calculator | App', 'images/NIQ_logo.png')
 
-selected = cst.Custom().set_menu(options=['   Home   ', 'Sampling', 'Replacing'],
+selected = cst.Custom().set_menu(options=['Home', 'Sampling', 'Replacing'],
                                  icons=['house',
                                         'calculator',
                                         'box-arrow-in-down-left'],
@@ -16,13 +16,13 @@ selected = cst.Custom().set_menu(options=['   Home   ', 'Sampling', 'Replacing']
 if selected == 'Sampling':
     left_space, sub_menu, right_space = st.columns([1, 8, 1], gap='small')
     with sub_menu:
-        selected2 = cst.Custom().set_menu(options=['   All   ', 'Random', 'Structured'],
+        selected2 = cst.Custom().set_menu(options=['All', 'Random', 'Structured'],
                                           icons=['bricks',
                                                  'shuffle',
                                                  'file-bar-graph'],
                                           index=0)
 
-    if selected2 == '   All   ':
+    if selected2 == 'All':
         cst.Subheader('Sampling Calculator App', '')
 
         st.markdown('The **sample size\' formula** is the following:')
@@ -268,7 +268,7 @@ if selected == 'Sampling':
     if selected2 == 'Structured':
         st.switch_page('pages/Structured.py')
 
-if selected == '   Home   ':
+if selected == 'Home':
     st.switch_page('StatsCalculator.py')
 
 
