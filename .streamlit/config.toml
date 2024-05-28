@@ -1,0 +1,45 @@
+[theme]
+
+# Primary accent for interactive elements
+primaryColor = '#2e6ef7'
+
+# Background color for the main content area
+backgroundColor = '#fafafa'
+
+# Background color for sidebar and most interactive widgets
+#secondaryBackgroundColor = '#F0F2F6'
+secondaryBackgroundColor = '#ededed'
+
+# Color used for almost all text
+textColor = '#31333f'
+
+# Font family for all text in the app, except code blocks
+# Accepted values (serif | sans serif | monospace) 
+# Default: "sans serif"
+font = "sans serif"
+
+[settings]
+# Version of the app.
+version = '1.4.0'
+
+# Background color for hovered menu
+tertiaryBackgroundColor = '#e0e0e0'
+
+# Select nav-link color
+selectedBackgroundColor = '#090a47'
+
+# Menu's icons color
+iconColor = '#31d1ff'
+
+# Color used as accent in text
+accentTextColor = '#2e6ef7'
+
+# Color used as a warning
+warningColor = '#f94449'
+
+[footer]
+# This repo url.
+pagePath = 'https://github.com/sape94'
+
+# Logo image.
+logoPath = 'https://i.postimg.cc/vBnHmZfF/innovation-logo.png'
