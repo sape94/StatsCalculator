@@ -5,7 +5,7 @@ from modules import ItemReplacer as ir
 
 cst.Header('Item Replacing | App', 'images/NIQ_logo.png')
 
-selected = cst.Custom().set_menu(options=['   Home   ', 'Sampling', 'Replacing'],
+selected = cst.Custom().set_menu(options=['Home', 'Sampling', 'Replacing'],
                                  icons=['house',
                                         'calculator',
                                         'box-arrow-in-down-left'],
@@ -224,7 +224,7 @@ if selected == 'Replacing':
                                 'You must verify that your selected items are in you working Dataframe.')
 
 
-if selected == '   Home   ':
+if selected == 'Home':
     st.switch_page('StatsCalculator.py')
 
 if selected == 'Sampling':
