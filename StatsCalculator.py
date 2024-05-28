@@ -3,12 +3,12 @@ from modules import CustomStreamlit as cst
 
 cst.Header('StatsCalculator | Home', 'images/NIQ_logo.png')
 
-selected = cst.Custom().set_menu(options=['Home', 'Sampling', 'Replacing'],
+selected = cst.Custom().set_menu(options=['   Home   ', 'Sampling', 'Replacing'],
                                  icons=['house',
                                         'calculator',
                                         'box-arrow-in-down-left'])
 
-if selected == 'Home':
+if selected == '   Home   ':
     st.header('List of available apps and sub apps')
 
     cst.Subheader('Sampling Calculator App', '/Sampling')
