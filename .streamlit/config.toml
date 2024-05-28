@@ -39,7 +39,7 @@ warningColor = '#f94449'
 
 [footer]
 # This repo url.
-pagePath = 'https://github.com/sape94'
+pagePath = 'https://github.com/sape94/StatsCalculator'
 
 # Logo image.
 logoPath = 'https://i.postimg.cc/vBnHmZfF/innovation-logo.png'
