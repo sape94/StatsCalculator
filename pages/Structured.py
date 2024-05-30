@@ -131,7 +131,7 @@ if selected == 'Sampling':
                     st.write(
                         'If you want to remove items from the sampled Dataframe use our:')
                     cst.Subsubheader('Replacing App',
-                                     'pages/Replacing.py', 'center')
+                                     'pages/Replacing', 'center')
                     st.write('')
                     st.write('')
 
