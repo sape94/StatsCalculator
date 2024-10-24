@@ -230,11 +230,14 @@ class StructuredSampler:
         Returns:
             pd.DataFrame: The filtered working pivot DataFrame.
         """
-        ascending_filtered_working_pivot = working_pivot_df[
-            working_pivot_df['Sample_size_by_weight'].isin(
-                values_ascending_filter)
-        ].sample(n=abs(actual_vs_sample_size_difference))
-        return ascending_filtered_working_pivot
+        filtered_df = working_pivot_df[
+            working_pivot_df['Sample_size_by_weight'].isin(values_ascending_filter)]
+        available_rows = len(filtered_df)
+        needed_rows = abs(actual_vs_sample_size_difference)
+        if available_rows < needed_rows:
+            return filtered_df
+        else:
+            return filtered_df.sample(n=abs(actual_vs_sample_size_difference))
 
     def __get_to_fill_ascending_working_pivot__(self,
                                                 ascending_filtered_working_pivot,
@@ -283,14 +286,28 @@ class StructuredSampler:
             auxiliar_df_ascending, actual_vs_sample_size_difference)
         values_ascending_filter = sub_df_ascending_auxiliar['Sample_size_by_weight'].tolist(
         )
-        ascending_filtered_working_pivot = self.__get_ascending_filtered_working_pivot__(
-            working_pivot_df, values_ascending_filter, actual_vs_sample_size_difference)
-        to_fill_ascending_working_pivot = self.__get_to_fill_ascending_working_pivot__(
-            ascending_filtered_working_pivot, original_without_prestructure)
 
-        structured_sampled_df = pd.concat(
-            [prestructure_sampling_df, to_fill_ascending_working_pivot])
-        return structured_sampled_df
+        try:
+            ascending_filtered_working_pivot = self.__get_ascending_filtered_working_pivot__(
+                working_pivot_df, values_ascending_filter, actual_vs_sample_size_difference)
+            if len(ascending_filtered_working_pivot) < abs(actual_vs_sample_size_difference):
+                additional_needed = abs(
+                    actual_vs_sample_size_difference) - len(ascending_filtered_working_pivot)
+                next_sizes = working_pivot_df[~working_pivot_df['Sample_size_by_weight'].isin(
+                    values_ascending_filter)]
+                next_sizes = next_sizes.nsmallest(
+                    additional_needed, 'Sample_size_by_weight')
+                ascending_filtered_working_pivot = pd.concat([
+                    ascending_filtered_working_pivot,
+                    next_sizes
+                ])
+            to_fill_ascending_working_pivot = self.__get_to_fill_ascending_working_pivot__(
+                ascending_filtered_working_pivot, original_without_prestructure)
+            return pd.concat([prestructure_sampling_df, to_fill_ascending_working_pivot])
+
+        except ValueError as e:
+            print(f"Warning: Could not achieve exact sample size. {str(e)}")
+            return prestructure_sampling_df
 
     def __get_sub_df_descending_auxiliar__(self,
                                            auxiliar_df_descending,
@@ -447,4 +464,4 @@ class StructuredSampler:
             return self.__structured_sample_positive_difference__()
 
         if actual_vs_sample_size_difference == 0:
-            return self.prestructure_sampling_df
+            return self.prestructure_sampling_df()
