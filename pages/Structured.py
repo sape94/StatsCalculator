@@ -87,11 +87,9 @@ if selected == 'Sampling':
                         'You must select the structure column(s) if you want to continue.')
 
                 else:
-                  l_warning, structured_warning, r_warning = st.columns(
-                            [1, 5, 1], gap='small')
-                  with structured_warning:
-                      cst.ColoredCaption(
-                          'You must be aware that in order to preserve the structure the most close value to the calculated sample size will be chosen.') 
+                    l_warning, structured_warning, r_warning = st.columns([1, 5, 1], gap='small')
+                    with structured_warning:
+                        cst.ColoredCaption('You must be aware that in order to preserve the structure the most close value to the calculated sample size will be chosen.') 
                     structured_pivot_df = ss.StructuredSampler(df,
                                                                n,
                                                                identifier_col,
